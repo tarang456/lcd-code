@@ -99,7 +99,7 @@ void init_LCD(void)
 
 	_delay_ms(1);
 
-	LCD_cmd(0x80);          // ì8î go to first line and ì0î is for 0th position
+	LCD_cmd(0x80);          // ‚Äú8‚Äù go to first line and ‚Äú0‚Äù is for 0th position
 
 	_delay_ms(1);
 
@@ -120,15 +120,6 @@ void LCD_Write_String(char *a)
 	}
 	
 }
-
-void adc(){
-	ADMUX=0b01000000;
-	ADCSRA=0b10000111;
-}
-
-
-
-
 
 int main(void)
 
@@ -157,13 +148,6 @@ int main(void)
 	int i;
 	
 while(1){
-	ADCSRA|=(1<<ADSC);
-	while(!(ADCSRA &(1<<ADIF)));
-	t=ADC;
-	itoa(t,a,10);
-	
-	
-	
 	LCD_Write_String("Digital DB ");
 	_delay_ms(10);
 	LCD_Write_String("meter");
